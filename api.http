@@ -1,0 +1,74 @@
+@host=http://localhost:3000
+
+### Get all users
+GET {{host}} HTTP/1.1
+
+### Get a valid user
+GET {{host}}/1 HTTP/1.1
+
+### Get an invalid user
+GET {{host}}/0 HTTP/1.1
+
+### Set a new valid user
+POST {{host}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "user",
+  "email": "new@gmail.com"
+}
+
+### Try set a new user without body content
+POST {{host}} HTTP/1.1
+
+### Try set a new user with an invalid name
+POST {{host}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "1 2 3",
+  "email": "new@gmail.com"
+}
+
+### Try set a new user with an invalid email
+POST {{host}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "user",
+  "email": "newgmail.com"
+}
+
+### Update a valid user (name)
+PUT {{host}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "user"
+}
+
+### Update a valid user (email)
+PUT {{host}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "email": "user@gmail.com"
+}
+
+### Update a valid user (name and email)
+PUT {{host}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "new",
+  "email": "new@gmail.com"
+}
+
+### Delete a valid user
+DELETE {{host}}/1 HTTP/1.1
+
+### Delete an invalid user
+DELETE {{host}}/0 HTTP/1.1
