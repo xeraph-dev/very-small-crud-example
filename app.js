@@ -57,6 +57,7 @@ app.get('/:id', (req, res) => {
   res.send(user)
 })
 
+// Set a new user
 app.post('/', (req, res) => {
   // Get user data from request body
   const user_data = req.body;
@@ -90,6 +91,7 @@ app.post('/', (req, res) => {
   res.send(user)
 })
 
+// Update a user
 app.put("/", (req, res) => {
   // Get user data from request body
   const user_data = req.body;
@@ -129,6 +131,7 @@ app.put("/", (req, res) => {
   res.send(updated_user)
 })
 
+// Delete a user
 app.delete("/:id", (req, res) => {
   const id = req.params.id;
 
